@@ -2,7 +2,7 @@
 
 the following files are avaliable:
 
-PeerReview 4:
+Course Project (peer review):
 - ui.r
 - server.r
 - ClaudioPresentation.html
