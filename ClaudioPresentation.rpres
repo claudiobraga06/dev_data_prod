@@ -1,0 +1,60 @@
+Develloping Data Products - Peer Review
+========================================================
+author: Claudio Vasconcelos Braga
+date:  08/12/2016
+autosize: true
+
+IRIS DATA
+========================================================
+
+Fisher's or Anderson's iris data set gives the measurements in centimeters of the variables sepal length and width and petal length and width, respectively, for 50 flowers from each of 3 species of iris. 
+
+The species are:
+- Setosa
+- Versicolor
+- Virginica.
+
+
+IRIS DATA SUMMARY
+========================================================
+Iris is a data frame with 150 cases (rows) and 5 variables (columns) named Sepal.Length, Sepal.Width, Petal.Length, Petal.Width, and Species.
+<font size=5> 
+```{r,echo=FALSE}
+summary(iris)
+```
+</font> 
+
+FORECASTING MODEL
+========================================================
+
+The forecast Specie application uses a Random Florest model to predict Specie from the sepal length and width and petal length and width.
+
+Model:
+```{r, echo=FALSE}
+library(e1071)
+library(randomForest)
+library(caret)
+````
+
+```{r, echo=TRUE}
+in1<-createDataPartition(iris$Species,p=0.80,list=FALSE)
+Train<-iris[in1,]
+Test<-iris[-in1,]
+Mod1<-train (Species~.,data=Train,method="rf")
+```
+
+
+ACCURACY
+========================================================
+<font size=5> 
+```{r, echo=FALSE}
+ResultPrev1<-predict(Mod1,Test)
+confusionMatrix(Test$Species,ResultPrev1)[c(2,3)]
+```
+</font> 
+
+APPLICATION
+========================================================
+
+To use Specie Forecast Aplication please vistit <https://claudiobraga.shinyapps.io/courseproject/>.
+
